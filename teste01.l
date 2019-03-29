@@ -2,33 +2,33 @@
 Gerador de TOKENS para uma linguagem como a descrita abaixo
  00 - DELIMITADOR , : ; .
  01 - OPERADOR_RELACIONAL < > = >= <= => =< <>
- 02 ñ OPERADOR_ARITMETICO + - * / SQR SQRT SIN COS TAN
+ 02 ‚Äì OPERADOR_ARITMETICO + - * / SQR SQRT SIN COS TAN
  03 - PALAVRA_RESERVADA Begin End For Do If Then Else Elseif Endif While Repeat Until
  04 - TIPO_DADO Integer Real Float Double Char String Boolean
- 05 ñ FUNCAO _nome (palavras comeÁando com underscore)
- 06 ñ VARI¡VEL $nome (palavras comeÁando com um ì$î)
- 07 ñ TEXTO ìtextoî (strings delimitadas entre aspas ìî )
- 08 ñ NUMERO 123 (seq¸Íncia de dÌgitos formando um n˙mero inteiro, positivo ou negativo)
- 09 ñ NOME nome (palavras compostas por uma seq¸Íncia de letras)
- 10 ñ COMENT¡RIO # texto # (texto delimindado pelo ì#î)
- 99 ñ INVALIDO demais elementos n„o presentes nesta descriÁ„o */
+ 05 ‚Äì FUNCAO _nome (palavras come√ßando com underscore)
+ 06 ‚Äì VARI√ÅVEL $nome (palavras come√ßando com um ‚Äú$‚Äù)
+ 07 ‚Äì TEXTO ‚Äútexto‚Äù (strings delimitadas entre aspas ‚Äú‚Äù )
+ 08 ‚Äì NUMERO 123 (seq√º√™ncia de d√≠gitos formando um n√∫mero inteiro, positivo ou negativo)
+ 09 ‚Äì NOME nome (palavras compostas por uma seq√º√™ncia de letras)
+ 10 ‚Äì COMENT√ÅRIO # texto # (texto delimindado pelo ‚Äú#‚Äù)
+ 99 ‚Äì INVALIDO demais elementos n√£o presentes nesta descri√ß√£o */
 
-/* SE«√O DE DEFINI«’ES */
+/* SE√á√ÉO DE DEFINI√á√ïES */
 
 %{
     /*
-        DefiniÁıes que estar„o disponÌveis 
-            - vari·veis
+        Defini√ß√µes que estar√£o dispon√≠veis 
+            - vari√°veis
             - constantes
-        O que for aqui ser· copiado para o arquivo *.yy.c
+        O que for aqui ser√° copiado para o arquivo *.yy.c
     
-        Vari·veis declaradas aqui estar„o acessÌvel nas funÁıes yylex() e 
+        Vari√°veis declaradas aqui estar√£o acess√≠vel nas fun√ß√µes yylex() e 
         main().
     */
     int contador = 0;
 %}
 
-/* DefiniÁıes de Nomes */
+/* Defini√ß√µes de Nomes */
 
 OPERADOR_ARITIMETICO "-"|"+"|"\/"|"*"|"SQR"|"SQRT"|"COS"|"TAN"|"SIN"
 NUMERO              -?[0-9]+
@@ -41,13 +41,13 @@ VARIAVEL	    $IDENTIFICADOR
 TEXTO	      	    "\[.]*"\
 COMENTARIO	    #[.]*#
 
-/* FIM DA SE«√O DE DEFINI«’ES */
+/* FIM DA SE√á√ÉO DE DEFINI√á√ïES */
 
 %%
-    /* SE«AO DE REGRAS 
+    /* SE√áAO DE REGRAS 
         Uma entrada por linha no formato:
         
-        padr„o  aÁ„o
+        padr√£o  a√ß√£o
 
     */
 {IDENTIFICADOR}        {printf("<identificador, %s>", yytext); contador++;}
@@ -65,15 +65,15 @@ COMENTARIO	    #[.]*#
 %%
 
 /*
-SeÁ„o de CÛdigo do Usu·rio
+Se√ß√£o de C√≥digo do Usu√°rio
 */
 
 int yywrap() {}
 int main() {
-    printf("Iniciando An·lise LÈxica...\n---\n");
+    printf("Iniciando An√°lise L√©xica...\n---\n");
     yylex();
-    printf("Foram encontradas %d ocorrÍncias de identificadores.\n", contador);
-    printf("---\n¡nalise Finalizada!\n");
+    printf("Foram encontradas %d ocorr√™ncias de identificadores.\n", contador);
+    printf("---\n√Ånalise Finalizada!\n");
     
     return 0;
 }
