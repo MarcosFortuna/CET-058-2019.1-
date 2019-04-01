@@ -1,45 +1,27 @@
-/* 
-Crie um Analisador Léxico utilizando Flex que consiga gerar os tokens
-do arquivo de entrada "exercicio01.in" que consiste em um código na
-linguagem C. O analisador deverá identificar todos os tokens referentes a:
-
-1. Identificadores
-2. Números Inteiros
-3. Números de Ponto Flutuante
-4. Palavras reservadas
-5. Operadores Matemáticos e Relacionais
-6. Chaves, Colchetes e Chaves
-
-utilize os exemplos no diretório "flex" como ponto de partida.
-*/
 /* SEÇÃO DE DEFINIÇÕES */
 
 %{
-    /*
-        Definições que estarão disponíveis 
-            - variáveis
-            - constantes
-        O que for aqui será copiado para o arquivo *.yy.c
     
-        Variáveis declaradas aqui estarão acessível nas funções yylex() e 
-        main().
-    */
     int contador = 0;
 %}
-NUMEROS_INTEIROS	    -?[0-9]+
+NUMEROS_INTEIROS	-?[0-9]+
 NUMEROS_DECIMAIS        -?[0-9]+\.[0-9]+
-PALAVRAS_RESERVADAS  	"int"|"main"|"if"|"while"|"for"|"unsigned"
-IDENTIFICADOR		    [_a-zA-Z][_a-zA-Z0-9]*
-OPERADORES_MATEMATICOS  "+"|"-"|"/"|"*"|"^"|"!"
+PALAVRAS_RESERVADAS "int"|"main"|"if"|"while"|"for"|"unsigned"|"include"|"define"|"const"|"void"|"return"|"exit"|"long"|"else"|"case"|"do"|"auto"|"break"|"continue"|"deafault"|"enum"|"goto"|"extern"|"register"|"short"|"sizeof"|"signed"|"typedef"|"struct"|"switch"|"union"|"volatile"	
+VARIAVEL		[_a-zA-Z][_a-zA-Z0-9]*
+OPERADORES_MATEMATICOS  "+"|"-"|"/"|"*"
 OPERADORES_RELACIONAIS  ">"|"<"|">="|"<="|"=="|"!="
+OIPERADORES_LOGICOS	"&&"|"||"|"!"|"&"|"|"|"^"
 ABERTURA_DE_ESCOPO      "("|"{"|"["
 FECHAMENTO_DE_ESCOPO	")"|"]"|"}"
+STRING			"\.+"\
+COMENTARIO		/\*.+\*/ | //.+\n
+ENCERRAMENTO            ";"
 
 /*  FIM DA SEÇÃO DE DEFINIÇÕES*/
 
 %%
 
-{IDENTIFICADOR}  	 {printf("<identificador, %s>\n", yytext);contador++;}
+{VARIAVEL}  	         {printf("<identificador, %s>\n", yytext);contador++;}
 {NUMEROS_INTEIROS}	 {printf("<numeros inteiros, %s>\n",  yytext); contador++;}
 {NUMEROS_DECIMAIS}	 {printf("<numeros decimais, %s>\n", yytext);contador++;}
 {PALAVRAS_RESERVADAS}	 {printf("<palavras reservadas, %s\n>", yytext);contador++;}
@@ -47,7 +29,10 @@ FECHAMENTO_DE_ESCOPO	")"|"]"|"}"
 {OPERADORES_RELACIONAIS} {printf("<operadores relacionais, %s\n>", yytext);contador++;}	
 {ABERTURA_DE_ESCOPO}	 {printf("<abetura de escopo, %s>\n", yytext);contador++;}
 {FECHAMENTO_DE_ESCOPO}   {printf("<fechamento de escopo, %s>\n", yytext);contador++;}
-
+{STRING}		 {printf("<string, %s>\n", yytext);contador++;}
+{COMENTARIO}		 {printf("<comentario, %s>\n", yytext);contador++;}
+{ENCERRAMENTO}           {printf("<encerramento, %s>\n", yytext);contador++;}
+{OPERADORES_LOGICOS}     {printf("<operadores logicos, %s>\n", yytext);contador++;}
 %%
 
 /*SEÇÃO DO CÓDIGO DO USUÁRIO*/
@@ -61,4 +46,3 @@ int main() {
     
     return 0;
 }
-
