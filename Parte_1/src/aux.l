@@ -6,15 +6,15 @@
 %}
 NUMEROS_INTEIROS	-?[0-9]+
 NUMEROS_DECIMAIS        -?[0-9]+\.[0-9]+
-PALAVRAS_RESERVADAS "int"|"main"|"if"|"while"|"for"|"unsigned"|"include"|"define"|"const"|"void"|"return"|"exit"|"long"|"else"|"case"|"do"|"auto"|"break"|"continue"|"deafault"|"enum"|"goto"|"extern"|"register"|"short"|"sizeof"|"signed"|"typedef"|"struct"|"switch"|"union"|"volatile"	
+PALAVRAS_RESERVADAS"int"|"main"|"if"|"while"|"for"|"unsigned"|"include"|"define"|"const"|"void"|"return"|"exit"|"long"|"else"|"case"|"do"|"auto"|"break"|"continue"|"deafault"|"enum"|"goto"|"extern"|"register"|"short"|"sizeof"|"signed"|"typedef"|"struct"|"switch"|"union"|"volatile"	
 VARIAVEL		[_a-zA-Z][_a-zA-Z0-9]*
 OPERADORES_MATEMATICOS  "+"|"-"|"/"|"*"
 OPERADORES_RELACIONAIS  ">"|"<"|">="|"<="|"=="|"!="
 ABERTURA_DE_ESCOPO      "("|"{"|"["
 FECHAMENTO_DE_ESCOPO	")"|"]"|"}"
-STRING			\"[.+]|\\n\"
-COMENTARIO		\/\*[.+]\*\/ | \/\/[.+]
-
+STRING			\"(\\.|[^"\\])*\"
+FL			";"
+COMENTARIO		"//".*|"/*"(\\.|\\)*"*/"
 /*  FIM DA SEÇÃO DE DEFINIÇÕES*/
 
 %%
@@ -28,8 +28,12 @@ COMENTARIO		\/\*[.+]\*\/ | \/\/[.+]
 {ABERTURA_DE_ESCOPO}	 {printf("<abetura de escopo, %s>\n", yytext);contador++;}
 {FECHAMENTO_DE_ESCOPO}   {printf("<fechamento de escopo, %s>\n", yytext);contador++;}
 {STRING}		 {printf("<string, %s>\n", yytext);contador++;}
-{COMENTARIO}		 {printf("<comentario, %s>\n", yytext);contador++;}
-<<EOF>>                  return 0;
+{FL}                     {printf("<string, %s>\n", yytext);contador++;}
+{COMENTARIO}		 {printf("<string, %s>\n", yytext);contador++;}
+<<EOF>>			 {return 0;}
+
+
+
 %%
 
 /*SEÇÃO DO CÓDIGO DO USUÁRIO*/

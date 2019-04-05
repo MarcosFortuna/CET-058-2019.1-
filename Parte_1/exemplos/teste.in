@@ -1,0 +1,21 @@
+"qualquer coisa\n"
+"qualquer coisa"
+// qualquer coisa
+/* qualquer coisa
+    qualquer coisa
+    qualquer coisa
+*/
+
+" qualquer coisa
+  qualquer coisa
+  qualquer coisa"
+
+int
+float
+char
+signed
+double
+unsigned
+long
+short
+
