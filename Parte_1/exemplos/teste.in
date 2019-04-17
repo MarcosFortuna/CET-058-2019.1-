@@ -18,4 +18,11 @@ double
 unsigned
 long
 short
-
+**var
+var.nome
+var->nome
+&var
+*var
+0xf56e
+02325678
+002340
