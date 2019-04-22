@@ -5,23 +5,32 @@
     int contador = 0;
 
 %}
-
+OCTAL		        0[0-7]+
+HEXA		        [0][Xx][0-9A-Fa-f]+
+DADOS                   "int"|"float"|"char"|"unsigned"|"long"|"short"|"double"|"signed"
+NUMEROS_INTEIROS	-?[0-9]+
+NUMEROS_DECIMAIS        -?[0-9]+\.[0-9]+
+VARIAVEL		[_a-zA-Z][_a-zA-Z0-9]*
+OPERADORES_MATEMATICOS  "+"|"-"|"/"|"*"
+OPERADORES_RELACIONAIS  ">"|"<"|">="|"<="|"=="|"!="
+ABERTURA_DE_ESCOPO      "("|"{"|"["
+FECHAMENTO_DE_ESCOPO	")"|"]"|"}"
+STRING			\"(\\.|[^"\\])*\"
 /*os comentários e stirng estão funcionando tranquilamente*/
 STRING			\"(\\.|[^"\\])*\" 
 COMENTARIO		"//".*|"/*"(\\.|\\)*"*/" 
 /*os dados estão funcionando normalmente*/
-DADOS           "int"|"float"|"char"|"unsigned"|"long"|"short"|"double"|"signed"
-DEFERENCIAMENTO    "&"|"->"|"."|[\*]+
-OCTAL		0[0-7]+
-HEXA		[0][Xx][0-9A-Fa-f]+
-%%
+DEFERENCIAMENTO    "->"|"."
 
-{STRING}      {printf("<string, %s>\n", yytext);contador++;}
-{COMENTARIO}  {printf("<comentario, %s>\n", yytext);contador++;}
-{DADOS}       {printf("<dados, %s>\n", yytext);contador++;}
-{DEFERENCIAMENTO} {printf("<dereferenciador, %s>\n", yytext);contador++;}
-{OCTAL}		  {printf("<OCTAL, %s>\n", yytext);contador++;}
-{HEXA}            {printf("<HEXADECIMAL, %s>\n", yytext);contador++;}
+%%
+{NUMEROS_INTEIROS}	 {printf("<numeros inteiros, %s>\n",  yytext); contador++;}
+{NUMEROS_DECIMAIS}	 {printf("<numeros decimais, %s>\n", yytext);contador++;}
+{STRING}                 {printf("<string, %s>\n", yytext);contador++;}
+{COMENTARIO}             {printf("<comentario, %s>\n", yytext);contador++;}
+{DADOS}                  {printf("<dados, %s>\n", yytext);contador++;}
+{DEFERENCIAMENTO}        {printf("<dereferenciador, %s>\n", yytext);contador++;}
+{OCTAL}		         {printf("<OCTAL, %s>\n", yytext);contador++;}
+{HEXA}                   {printf("<HEXADECIMAL, %s>\n", yytext);contador++;}
 %%
 
 /*SEÇÃO DO CÓDIGO DO USUÁRIO*/

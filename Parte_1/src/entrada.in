@@ -1,0 +1,42 @@
+
+
+int
+float
+double
+char
+long
+unsigned
+auto
+enum
+typedef struct
+short
+void
+;
+?:
+register
+static
+sizeof
+return
+break
+continue
+casa
+deafault
+variavel
+0014
+0x544
+5464
+544.556
+"testando string"
+" kkkk
+	asdkoasdk
+	asodkoasdk"
+//comentario
+/*comentario
+  comentario */
+
+**var
++= -= *= &= /= %= ^= 
+> < != ! ~ == = >> << . -> >=  <=
+&& || ^
++ / - (){}[]
+++ -- 
