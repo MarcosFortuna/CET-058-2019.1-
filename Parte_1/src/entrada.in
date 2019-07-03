@@ -1,42 +1,26 @@
+#include<stdlib.h>
+#include<stdio.h>
 
+typedef struct{
+   int vetor[10],numero = 0;
+   char caractere = 'a';
+   float real = 3.55;
+   double duplo = 6.55;
+}teste;
 
-int
-float
-double
-char
-long
-unsigned
-auto
-enum
-typedef struct
-short
-void
-;
-?:
-register
-static
-sizeof
-return
-break
-continue
-casa
-deafault
-variavel
-0014
-0x544
-5464
-544.556
-"testando string"
-" kkkk
-	asdkoasdk
-	asodkoasdk"
-//comentario
-/*comentario
-  comentario */
+int main(){
+   teste newvar;
+   int i = 1;
+   newvar.numero +=  1;
+   newvar.real = 20/35;
 
-**var
-+= -= *= &= /= %= ^= 
-> < != ! ~ == = >> << . -> >=  <=
-&& || ^
-+ / - (){}[]
-++ -- 
+   if(newvar.caractere == 'a'){
+        printf("hello world");
+   }
+   
+   while(i <= 5){
+        i++;
+	}
+
+return 0;
+}

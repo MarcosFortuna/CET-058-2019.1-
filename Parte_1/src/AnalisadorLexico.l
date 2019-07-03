@@ -29,7 +29,9 @@ FECHAMENTO_DE_ESCOPO	")"|"]"|"}"
 ENDLINE			";"
 /*os comentários e stirng estão funcionando tranquilamente*/
 STRING			\"(\\.|[^"\\])*\" 
-COMENTARIO		"//".*|"/*"(\\.|\\)*"*/" 
+COMENTARIO		"//".*|"/*"(\\.|\\)*"*/"
+VETOR 			([_a-zA-Z][_a-zA-Z0-9]*)(\[)([0-9]+)|([a-zA-Z]+)(\])
+CHAR			\'(.)\' 
 /*os dados estão funcionando normalmente*/
 DEFERENCIAMENTO         "->"|"."
 
@@ -59,6 +61,8 @@ DEFERENCIAMENTO         "->"|"."
 {STRING}                 {printf("<string, %s>\n", yytext);contador++;}
 {COMENTARIO}             {printf("<comentario, %s>\n", yytext);contador++;}
 {DEFERENCIAMENTO}        {printf("<dereferenciador, %s>\n", yytext);contador++;}
+{VETOR}                  {printf("<vetor, %s>\n", yytext);contador++;}
+{CHAR}                   {printf("<CARACTERE, %s>\n", yytext);contador++;}
 
 %%
 

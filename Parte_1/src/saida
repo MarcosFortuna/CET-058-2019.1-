@@ -1,0 +1,129 @@
+Iniciando Análise Léxica...
+---
+#<identificador, include>
+<operadores relacionais, <
+><identificador, stdlib>
+<dereferenciador, .>
+<identificador, h>
+<operadores relacionais, >
+>
+#<identificador, include>
+<operadores relacionais, <
+><identificador, stdio>
+<dereferenciador, .>
+<identificador, h>
+<operadores relacionais, >
+>
+
+<struct, typedef>
+ <struct, struct>
+<abetura de escopo, {>
+
+   <dados, int>
+ <vetor, vetor[10>
+<fechamento de escopo, ]>
+,<identificador, numero>
+ <atribuição, =>
+ <numeros inteiros, 0>
+<endline, ;>
+
+   <dados, char>
+ <identificador, caractere>
+ <atribuição, =>
+ <CARACTERE, 'a'>
+<endline, ;>
+
+   <dados, float>
+ <identificador, real>
+ <atribuição, =>
+ <numeros decimais, 3.55>
+<endline, ;>
+
+   <dados, double>
+ <identificador, duplo>
+ <atribuição, =>
+ <numeros decimais, 6.55>
+<endline, ;>
+
+<fechamento de escopo, }>
+<identificador, teste>
+<endline, ;>
+
+
+<dados, int>
+ <identificador, main>
+<abetura de escopo, (>
+<fechamento de escopo, )>
+<abetura de escopo, {>
+
+   <identificador, teste>
+ <identificador, newvar>
+<endline, ;>
+
+   <dados, int>
+ <identificador, i>
+ <atribuição, =>
+ <numeros inteiros, 1>
+<endline, ;>
+
+   <identificador, newvar>
+<dereferenciador, .>
+<identificador, numero>
+ <atribuição, +=>
+  <numeros inteiros, 1>
+<endline, ;>
+
+   <identificador, newvar>
+<dereferenciador, .>
+<identificador, real>
+ <atribuição, =>
+ <numeros inteiros, 20>
+<operadores matematicos, /
+><numeros inteiros, 35>
+<endline, ;>
+
+
+   <condicional, if>
+<abetura de escopo, (>
+<identificador, newvar>
+<dereferenciador, .>
+<identificador, caractere>
+ <operadores relacionais, ==
+> <CARACTERE, 'a'>
+<fechamento de escopo, )>
+<abetura de escopo, {>
+
+        <identificador, printf>
+<abetura de escopo, (>
+<string, "hello world">
+<fechamento de escopo, )>
+<endline, ;>
+
+   <fechamento de escopo, }>
+
+   
+   <loop, while>
+<abetura de escopo, (>
+<identificador, i>
+ <operadores relacionais, <=
+> <numeros inteiros, 5>
+<fechamento de escopo, )>
+<abetura de escopo, {>
+
+        <identificador, i>
+<operador_incr, ++>
+<endline, ;>
+
+	<fechamento de escopo, }>
+
+
+<keyword, return>
+ <numeros inteiros, 0>
+<endline, ;>
+
+<fechamento de escopo, }>
+
+Foram encontradas 97 ocorrências de TOKENS.
+---
+Ánalise Finalizada!
+
